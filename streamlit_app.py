@@ -34,14 +34,18 @@ try:
 except ERLError as e:
   streamlit.error()
 
-streamlit.stop()
 
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * from fruit_load_list")
-my_data_rows = my_cur.fetchall()
-streamlit.header("The fruit load list contains:")
+def get fruit_load_list():
+   with my_cur as my_cnx.cursor()
+   my_cur.execute("SELECT * from fruit_load_list")
+   return my_cur.fetchall()
+if streamlit.button('Get Fruit load list');
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_data_rows = get_fruit_load_list()
 streamlit.dataframe(my_data_rows)
+ 
+
+
 add_my_fruit = streamlit.text_input('What fruit would you like to add?','jackfruit')
 streamlit.write('Thanks for adding ', add_my_fruit )
 my_cur.execute("insert into fruit_load_list values ('from streamlit')");
