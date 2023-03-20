@@ -34,7 +34,7 @@ try:
 except ERLError as e:
   streamlit.error()
 
-
+streamlit.header('The fruit load list contains:')
 def get fruit_load_list():
    with my_cur as my_cur:
    my_cur.execute("SELECT * from fruit_load_list")
