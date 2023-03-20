@@ -36,7 +36,7 @@ except ERLError as e:
 
 
 def get fruit_load_list():
-   with my_cur as my_cnx.cursor()
+   with my_cur as my_cur:
    my_cur.execute("SELECT * from fruit_load_list")
    return my_cur.fetchall()
 if streamlit.button('Get Fruit load list');
